@@ -16,6 +16,7 @@ const userSchema = new Schema({
   lastName: String,
   profilePhoto: String,
   source: { type: String, required: [true, "source not specified"] },
+  lastVisited: {type: Date, default: new Date()}
 });
 
 var userModel = mongoose.model("user", userSchema, "user");

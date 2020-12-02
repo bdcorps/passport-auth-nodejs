@@ -36,6 +36,7 @@ passport.use(
       const currentUser = await User.findOne({ id: profile.id });
       if (currentUser) {
         // already have the user -> return (login)
+        currentUser.lastVisited = new Date();
         return done(null, currentUser);
       } else {
         // register user and return
