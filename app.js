@@ -3,13 +3,13 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-var flash = require("connect-flash");
+const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
-var session = require("express-session");
+const session = require("express-session");
 
-require("./src/user/user.model");
+// require("./src/user/user.model");
 require("./src/config/passport");
 
 const mongodbUri = process.env.MONGO_URI;
@@ -85,10 +85,10 @@ app.get(
 
 app.get("/auth/logout", (req, res) => {
   req.flash("success", "Successfully logged out");
-  req.session.destroy(function() {
+  req.session.destroy(function () {
     res.clearCookie('connect.sid');
     res.redirect("/");
-});
+  });
 });
 
 app.listen(3000, function () {
