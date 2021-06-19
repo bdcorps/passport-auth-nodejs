@@ -9,3 +9,13 @@ body {
 .btn-primary:hover {
   background-color: #4d02ee;
 }
+
+.error-text {
+  text-align: center;
+  color: #ff0000;
+}
+
+.my-2 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}

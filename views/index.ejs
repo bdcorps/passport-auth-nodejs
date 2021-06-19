@@ -19,30 +19,60 @@
     <link href="./css/common.css" rel="stylesheet" />
     <link href="./css/index.css" rel="stylesheet" />
   </head>
-  <body class="text-center">
-    <form class="form-login" action="/auth/google" method="get">
-      <img
-        class="mb-4"
-        src="./images/saasbase.png"
-        alt=""
-        width="72"
-        height="72"
-      />
-      <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
-      <p class="mb-3">
-        This is a live demo on authentication with Google OAuth2 using
-        Passport.js
-      </p>
-      <button class="btn btn-primary btn-block" type="submit">
-        Sign in with Google
-      </button>
-      <a class="mt-3" href="/profile">View Profile</a>
-      <% if ( message ) { %>
-      <p><%= message %></p>
-      <% } %>
-      <p class="mt-5 mb-3 text-muted">&copy; SaasBase Inc. 2020</p>
-    </form>
+  <body class="">
+    <p style="text-align: right; margin-top: 1rem">
+      <a href="/local/signup">Sign up using Email →</a>
+    </p>
+    <div style="margin-top: 10rem; padding: 1rem">
+      <form
+        class=""
+        style="text-align: center"
+        action="/auth/google"
+        method="get"
+      >
+        <a href="/"
+          ><img
+            class="mb-4"
+            src="./images/saasbase.png"
+            alt=""
+            width="72"
+            height="72"
+        /></a>
+        <h1 class="h3 mb-3 font-weight-normal">Sign in with Google</h1>
+        <p class="mb-3 text-muted">
+          Implement a Google OAuth strategy using Passport.js and MongoDB
+        </p>
 
+        <button class="btn btn-primary btn-block my-2" type="submit">
+          Sign in with Google
+        </button>
+      </form>
+
+      <div class="form-group">
+        <% if ( messages.error) { %>
+        <p class="error-text"><%= messages.error %></p>
+        <% } %>
+      </div>
+
+      <hr class="divider" />
+      <form
+        class=""
+        style="text-align: center"
+        action="/local/signin"
+        method="get"
+      >
+        <button
+          class="btn btn-secondary btn-block my-2"
+          onclick="window.location.href='/local/signin'"
+        >
+          Sign in with Email
+        </button>
+        <div style="padding: 1rem"></div>
+        <div class="form-group">
+          <p class="mt-5 mb-3 text-muted">&copy; SaasBase Inc. 2020</p>
+        </div>
+      </form>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

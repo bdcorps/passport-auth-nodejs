@@ -3,14 +3,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const flash = require("connect-flash");
+const flash = require('express-flash');
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
+const uuid = require("uuid");
+const bcrypt = require('bcrypt');
+const User = require("./src/user/user.model");
 
 // require("./src/user/user.model");
 require("./src/config/passport");
+require("./src/config/local");
+require("./src/config/google");
 
 const mongodbUri = process.env.MONGO_URI;
 
@@ -52,15 +57,19 @@ const isLoggedIn = (req, res, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { message: req.flash("success") }); //success is where passport.js saves the flash message
+  res.render("index.ejs");
+});
+
+app.get("/local/signup", (req, res) => {
+  res.render("local/signup.ejs");
+});
+
+app.get("/local/signin", (req, res) => {
+  res.render("local/signin.ejs");
 });
 
 app.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile.ejs", { user: req.user });
-});
-
-app.get("/failed", (req, res) => {
-  res.render("index.ejs", { message: req.flash("error") });
 });
 
 app.get(
@@ -73,14 +82,11 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/failed",
+    failureRedirect: "/",
     successRedirect: "/profile",
     failureFlash: true,
     successFlash: "Successfully logged in!",
-  }),
-  (req, res) => {
-    res.send("Successfully logged in");
-  }
+  })
 );
 
 app.get("/auth/logout", (req, res) => {
@@ -91,6 +97,43 @@ app.get("/auth/logout", (req, res) => {
   });
 });
 
-app.listen(3000, function () {
-  console.log("SaaSBase Authentication Server listening on port 3000");
+app.post("/auth/local/signup", async (req, res) => {
+  const { first_name, last_name, email, password } = req.body
+
+  if (password.length < 8) {
+    req.flash("error", "Account not created. Password must be 7+ characters long");
+    return res.redirect("/local/signup");
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10)
+
+  try {
+    await new User({
+      id: uuid.v4(),
+      email,
+      firstName: first_name,
+      lastName: last_name,
+      source: "local",
+      password: hashedPassword
+    }).save();
+  } catch (e) {
+    console.log("error is", e, e.constructor)
+
+    req.flash("error", "Error creating a new account. Try a different login method.");
+    res.redirect("/local/signup")
+  }
+
+  res.redirect("/local/signin")
+});
+
+app.post('/auth/local/signin',
+  passport.authenticate('local', {
+    successRedirect: '/profile',
+    failureRedirect: '/local/signin',
+    failureFlash: true
+  })
+);
+
+app.listen(3001, function () {
+  console.log("SaaSBase Authentication Server listening on port 3001");
 });
