@@ -1,7 +1,6 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-// Basic User Schema for Google Authentication
 const userSchema = new Schema({
   id: {
     type: String,

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const passport = require("passport");
 const User = require("../user/user.model");
 

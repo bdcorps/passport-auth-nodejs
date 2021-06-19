@@ -1,13 +1,13 @@
 {
-  "name": "auth-basic",
+  "name": "auth-basic-nodejs",
   "version": "1.0.0",
+  "author": "sssaini",
   "description": "auth-basic",
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon app.js",
     "start": "node app.js"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

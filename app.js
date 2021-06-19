@@ -12,7 +12,6 @@ const uuid = require("uuid");
 const bcrypt = require('bcrypt');
 const User = require("./src/user/user.model");
 
-// require("./src/user/user.model");
 require("./src/config/passport");
 require("./src/config/local");
 require("./src/config/google");
@@ -132,6 +131,6 @@ app.post('/auth/local/signin',
   })
 );
 
-app.listen(3001, function () {
-  console.log("SaaSBase Authentication Server listening on port 3001");
+app.listen(3000, function () {
+  console.log("SaaSBase Authentication Server listening on port 3000");
 });

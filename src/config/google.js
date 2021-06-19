@@ -1,5 +1,5 @@
 const passport = require("passport");
-const User = require("../user/user.model");
+const UserService = require('./src/user')
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 passport.use(
@@ -24,14 +24,13 @@ passport.use(
         return done(null, currentUser);
       } else {
         // register user and return
-        const newUser = await new User({
+        const newUser = await UserService.addGoogleUser({
           id,
           email,
           firstName,
           lastName,
-          profilePhoto,
-          source,
-        }).save();
+          profilePhoto
+        })
         return done(null, newUser);
       }
     }
