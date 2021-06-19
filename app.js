@@ -117,8 +117,6 @@ app.post("/auth/local/signup", async (req, res) => {
       password: hashedPassword
     }).save();
   } catch (e) {
-    console.log("error is", e, e.constructor)
-
     req.flash("error", "Error creating a new account. Try a different login method.");
     res.redirect("/local/signup")
   }

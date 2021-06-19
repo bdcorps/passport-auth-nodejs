@@ -10,7 +10,6 @@ passport.use(
       clientSecret: process.env.CLIENT_SECRET,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("used strategy", profile);
       const id = profile.id;
       const email = profile.emails[0].value;
       const firstName = profile.name.givenName;
