@@ -35,67 +35,80 @@
         action="/auth/local/signup"
         method="post"
       >
+        <a href="/"
+          ><img
+            class="mb-4"
+            src="../images/saasbase.png"
+            alt=""
+            width="72"
+            height="72"
+        /></a>
+        <h1 class="h3 mb-3 font-weight-normal">Sign up with Email</h1>
+        <p class="mb-3 text-muted">
+          Implement a local signup strategy using Passport.js and MongoDB
+        </p>
 
-      <a href="/"
-      ><img
-        class="mb-4"
-        src="../images/saasbase.png"
-        alt=""
-        width="72"
-        height="72"
-    /></a>
-    <h1 class="h3 mb-3 font-weight-normal">Sign up with Email</h1>
-    <p class="mb-3 text-muted">
-      Implement a local signup strategy using Passport.js and MongoDB
-    </p>
-
-    <div style="text-align: left">
-
-        <div class="form-group">
+        <div style="text-align: left">
+          <div class="form-group">
             <label for="exampleInputEmail1">First Name</label>
-            <input name="first_name" type="text" aria-label="First name" class="form-control" placeholder="Elon" required />
-          </div>
-            <div class="form-group">
-            <label for="exampleInputEmail1">Last Name</label>
-            <input name="last_name" type="text" aria-label="Last name" class="form-control" placeholder="Musk" required />
+            <input
+              name="first_name"
+              type="text"
+              aria-label="First name"
+              class="form-control"
+              placeholder="Elon"
+              required
+            />
           </div>
           <div class="form-group">
-          <label name="email" for="exampleInputEmail1">Email Address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            name="email"
-            aria-describedby="emailHelp"
-            placeholder="elon.musk@gmail.com"
-            required
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
+            <label for="exampleInputEmail1">Last Name</label>
+            <input
+              name="last_name"
+              type="text"
+              aria-label="Last name"
+              class="form-control"
+              placeholder="Musk"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label name="email" for="exampleInputEmail1">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              name="email"
+              aria-describedby="emailHelp"
+              placeholder="elon.musk@gmail.com"
+              required
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="elonmusk79!"
+              required
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            name="password"  
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="elonmusk79!"
-            required
-          />
-        </div>
-
-      </div>
         <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-        
-        <% if ( messages.error) { %>
-          <p class="error-text"><%= messages.error %></p>
-          <% } %>
 
-        <p class="mt-5 mb-3 text-muted" style="text-align: center">
-          &copy; SaasBase Inc. 2020
-        </p>  </div>
+        <% if ( messages.error) { %>
+        <p class="error-text"><%= messages.error %></p>
+        <% } %>
+
+        <div class="mt-5 mb-3">
+          <a href="https://saasbase.dev" style="text-align: center">
+            Built by SaaSBase
+          </a>
+        </div>
       </form>
     </div>
     <script
