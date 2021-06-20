@@ -20,9 +20,6 @@
     <link href="./css/index.css" rel="stylesheet" />
   </head>
   <body>
-    <p class="links">
-      <a href="/local/signup">Sign up using Email →</a>
-    </p>
     <div class="content">
       <form class="text-center" action="/auth/google" method="get">
         <a href="/"
@@ -49,21 +46,11 @@
         <% } %>
       </div>
 
-      <hr class="divider" />
-      <form class="text-center" action="/local/signin" method="get">
-        <button
-          class="btn btn-secondary btn-block my-2"
-          onclick="window.location.href='/local/signin'"
-        >
-          Sign in with Email
-        </button>
-
-        <div class="mt-5 mb-3 text-center">
-          <a class="text-muted" href="https://saasbase.dev">
-            Built by SaaSBase
-          </a>
-        </div>
-      </form>
+      <div class="mt-5 mb-3 text-center">
+        <a class="text-muted" href="https://saasbase.dev">
+          Built by SaaSBase
+        </a>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

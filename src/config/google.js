@@ -1,5 +1,5 @@
 const passport = require("passport");
-const UserService = require('./src/user')
+const UserService = require('../user')
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 passport.use(
@@ -17,7 +17,9 @@ passport.use(
       const profilePhoto = profile.photos[0].value;
       const source = "google";
 
-      const currentUser = await User.findOne({ id: profile.id, source: "google" });
+      const currentUser = await UserService.getUserByEmail({ email, source })
+
+      User.findOne({ id: profile.id, source: "google" });
       if (currentUser) {
         // already have the user -> return (login)
         currentUser.lastVisited = new Date();

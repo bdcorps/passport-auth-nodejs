@@ -15,6 +15,20 @@ body {
   color: #ff0000;
 }
 
+.links {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.links a {
+  margin-top: 0.5rem;
+}
+
+.content {
+  margin-top: 6rem;
+  padding: 1rem;
+}
+
 .my-2 {
   margin-top: 2rem !important;
   margin-bottom: 2rem !important;

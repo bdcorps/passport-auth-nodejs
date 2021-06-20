@@ -16,13 +16,13 @@ const getUsers = (User) => () => {
   return User.find({})
 }
 
-const getUserByEmail = (User) => async (email) => {
-  return await User.findOne({ email })
+const getUserByEmail = (User) => async (email, source) => {
+  return await User.findOne({ email, source })
 }
 
 module.exports = (User) => {
   return {
-    addUser: addUser(User),
+    addGoogleUser: addGoogleUser(User),
     getUsers: getUsers(User),
     getUserByEmail: getUserByEmail(User)
   }

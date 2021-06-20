@@ -19,79 +19,80 @@
     <link href="../css/common.css" rel="stylesheet" />
     <link href="../css/index.css" rel="stylesheet" />
   </head>
-  <body class="">
-    <p style="text-align: right; margin-top: 1rem">
+  <body>
+    <p class="links">
       <a href="/local/signup">Sign up using Email →</a>
     </p>
-    <form
-      class="form-signin"
-      style="text-align: left"
-      action="/auth/local/signin"
-      method="POST"
-    >
-      <div style="margin-top: 10rem; text-align: center">
-        <a href="/"
-          ><img
-            class="mb-4"
-            src="../images/saasbase.png"
-            alt=""
-            width="72"
-            height="72"
-        /></a>
-        <h1 class="h3 mb-3 font-weight-normal">Sign in with Email</h1>
-        <p class="mb-3 text-muted">
-          Implement a local signin strategy using Passport.js and MongoDB
-        </p>
+    <div class="content">
+      <form
+        class="form-signin text-left"
+        action="/auth/local/signin"
+        method="POST"
+      >
+        <div class="text-center">
+          <a href="/"
+            ><img
+              class="mb-4"
+              src="../images/saasbase.png"
+              alt=""
+              width="72"
+              height="72"
+          /></a>
+          <h1 class="h3 mb-3 font-weight-normal">Sign in with Email</h1>
+          <p class="mb-3 text-muted">
+            Implement a local signin strategy using Passport.js and MongoDB
+          </p>
 
-        <div style="text-align: left">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input
-              type="email"
-              name="username"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="elon.musk@gmail.com"
-              required
-            />
-            <small id="emailHelp" class="form-text text-muted"
-              >We'll never share your email with anyone else.</small
-            >
+          <div class="text-left">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input
+                type="email"
+                name="username"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="elon.musk@gmail.com"
+                required
+              />
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                ax
+                placeholder="elonmusk79!"
+                required
+              />
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              name="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              ax
-              placeholder="elonmusk79!"
-              required
-            />
+            <a href="">Forgot password?</a>
+          </div>
+
+          <button class="btn btn-primary btn-block my-2" type="submit">
+            Sign In
+          </button>
+
+          <% if ( messages.error) { %>
+          <p class="error-text"><%= messages.error %></p>
+          <% } %>
+
+          <div class="mt-5 mb-3 text-center">
+            <a class="text-muted" href="https://saasbase.dev">
+              Built by SaaSBase
+            </a>
           </div>
         </div>
-
-        <div class="form-group">
-          <a href="">Forgot password?</a>
-        </div>
-
-        <button class="btn btn-primary btn-block my-2" type="submit">
-          Sign In
-        </button>
-
-        <% if ( messages.error) { %>
-        <p class="error-text"><%= messages.error %></p>
-        <% } %>
-
-        <div class="mt-5 mb-3">
-          <a href="https://saasbase.dev" style="text-align: center">
-            Built by SaaSBase
-          </a>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

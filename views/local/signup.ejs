@@ -19,19 +19,18 @@
     <link href="../css/common.css" rel="stylesheet" />
     <link href="../css/index.css" rel="stylesheet" />
   </head>
-  <body class="">
-    <p style="text-align: right; margin-top: 1rem">
+  <body>
+    <p class="links">
       <a href="/local/signin">Sign in using Email →</a>
     </p>
 
-    <p style="text-align: right; margin-top: 1rem">
+    <p class="links">
       <a href="/">Sign in using Google →</a>
     </p>
 
     <div style="margin-top: 5rem">
       <form
-        class="form-signin"
-        style="text-align: center"
+        class="form-signin text-center"
         action="/auth/local/signup"
         method="post"
       >
@@ -48,7 +47,7 @@
           Implement a local signup strategy using Passport.js and MongoDB
         </p>
 
-        <div style="text-align: left">
+        <div class="text-left">
           <div class="form-group">
             <label for="exampleInputEmail1">First Name</label>
             <input
@@ -104,8 +103,8 @@
         <p class="error-text"><%= messages.error %></p>
         <% } %>
 
-        <div class="mt-5 mb-3">
-          <a href="https://saasbase.dev" style="text-align: center">
+        <div class="mt-5 mb-3 text-center">
+          <a class="text-muted" href="https://saasbase.dev">
             Built by SaaSBase
           </a>
         </div>

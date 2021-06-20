@@ -55,6 +55,10 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
 
+app.get("/g", (req, res) => {
+  res.render("google.ejs");
+});
+
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
