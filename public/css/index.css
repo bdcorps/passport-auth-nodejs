@@ -1,6 +1,5 @@
 body {
   height: 100vh;
-  /* display: flex; */
   align-items: center;
   background-color: #f5f5f5;
   width: 100%;
@@ -27,18 +26,18 @@ hr.divider:after {
   background-color: #f5f5f5;
 }
 
-.form-signin {
+.auth-container {
   padding: 15px;
   margin: 0 auto;
 }
 
-.form-signin .form-control {
+.auth-container .form-control {
   position: relative;
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
 }
 
-.form-signin input[type="email"] {
+.auth-container input[type="email"] {
   margin-bottom: -1px;
 }
