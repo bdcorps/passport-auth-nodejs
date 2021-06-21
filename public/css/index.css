@@ -1,3 +1,7 @@
+html,
+body {
+  height: 100%;
+}
 body {
   height: 100vh;
   align-items: center;
@@ -9,6 +13,37 @@ body {
 
 a {
   color: #5000ff;
+}
+
+.btn-primary {
+  background-color: #5000ff;
+}
+.btn-primary:hover {
+  background-color: #4d02ee;
+}
+
+.error-text {
+  text-align: center;
+  color: #ff0000;
+}
+
+.links {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.links a {
+  margin-top: 0.5rem;
+}
+
+.content {
+  margin-top: 6rem;
+  padding: 1rem;
+}
+
+.my-2 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 hr.divider {
