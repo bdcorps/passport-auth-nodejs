@@ -85,7 +85,7 @@ app.get(
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/",
+    failureRedirect: "/g",
     successRedirect: "/profile",
     failureFlash: true,
     successFlash: "Successfully logged in!",
@@ -111,14 +111,13 @@ app.post("/auth/local/signup", async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10)
 
   try {
-    await new User({
+    await UserService.addLocalUser({
       id: uuid.v4(),
       email,
       firstName: first_name,
       lastName: last_name,
-      source: "local",
       password: hashedPassword
-    }).save();
+    })
   } catch (e) {
     req.flash("error", "Error creating a new account. Try a different login method.");
     res.redirect("/local/signup")

@@ -5,16 +5,20 @@ const bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy(
   async function (email, password, done) {
-    User.findOne({ email, source: "local" }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: `User with email ${email} does not exist` });
-      }
+    const currentUser = await UserService.getUserByEmail({ email })
 
-      if (!bcrypt.compareSync(password, user.password)) {
-        return done(null, false, { message: `Incorrect password provided` });
-      }
-      return done(null, user);
-    });
+    if (!currentUser) {
+      return done(null, false, { message: `User with email ${email} does not exist` });
+    }
+
+    if (currentUser.source != "local") {
+      //return error
+      return done(null, false, { message: `You have previously signed up with a different signin method` });
+    }
+
+    if (!bcrypt.compareSync(password, currentUser.password)) {
+      return done(null, false, { message: `Incorrect password provided` });
+    }
+    return done(null, user);
   }
 ));
