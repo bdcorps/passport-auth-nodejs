@@ -3,14 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const flash = require('express-flash');
+const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const uuid = require("uuid");
-const bcrypt = require('bcrypt');
-const User = require("./src/user/user.model");
+const bcrypt = require("bcrypt");
+const UserService = require("./src/user");
 
 require("./src/config/passport");
 require("./src/config/local");
@@ -95,7 +95,7 @@ app.get(
 app.get("/auth/logout", (req, res) => {
   req.flash("success", "Successfully logged out");
   req.session.destroy(function () {
-    res.clearCookie('connect.sid');
+    res.clearCookie("connect.sid");
     res.redirect("/");
   });
 });
@@ -126,10 +126,10 @@ app.post("/auth/local/signup", async (req, res) => {
   res.redirect("/local/signin")
 });
 
-app.post('/auth/local/signin',
-  passport.authenticate('local', {
-    successRedirect: '/profile',
-    failureRedirect: '/local/signin',
+app.post("/auth/local/signin",
+  passport.authenticate("local", {
+    successRedirect: "/profile",
+    failureRedirect: "/local/signin",
     failureFlash: true
   })
 );
