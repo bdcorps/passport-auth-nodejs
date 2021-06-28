@@ -7,11 +7,9 @@ const addGoogleUser = (User) => ({ id, email, firstName, lastName, profilePhoto 
   return user.save()
 }
 
-const addLocalUser = (User) => ({ id, email, firstName, lastName, profilePhoto }) => {
-  console.log(id, email, firstName, lastName, profilePhoto)
-
+const addLocalUser = (User) => ({ id, email, firstName, lastName, password }) => {
   const user = new User({
-    id, email, firstName, lastName, profilePhoto, source: "local"
+    id, email, firstName, lastName, password, source: "local"
   })
   return user.save()
 }
