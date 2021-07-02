@@ -134,6 +134,8 @@ app.post("/auth/local/signin",
   })
 );
 
-app.listen(3000, function () {
-  console.log("SaaSBase Authentication Server listening on port 3000");
+var port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
+
+app.listen(port, function () {
+  console.log(`SaaSBase Authentication Server listening on port ${port}`);
 });
